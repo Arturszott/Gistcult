@@ -1,29 +1,10 @@
 import React, { Component } from 'react';
 import LoadingOrderAnimation from 'react-loading-order-with-animation';
 
-/* utils */
-import { setParallax } from '../../utils/parallax';
-
 /* component styles */
 import { styles } from './styles.scss';
 
 export class TopImage extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-  componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-  }
-
-  handleScroll = () => {
-    setParallax(this.refs.parallax, 10);
-  };
 
   render() {
     return (
@@ -38,7 +19,7 @@ export class TopImage extends Component {
                 wait={700}
               >
                 <h1 className="title">
-                  Redux Easy Boilerplate
+                  CodeCult Gist editor
                 </h1>
               </LoadingOrderAnimation>
               <LoadingOrderAnimation animation="fade-in"
