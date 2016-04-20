@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import { updateAuthStatus } from './actions/auth';
+import { fetchToken } from './actions/auth';
 
 /* containers */
 import { App } from 'containers/App';
@@ -11,7 +11,7 @@ const extractCode = (store, nextState, replace, next) => {
     const query = nextState.location.query;
 
     if (query.code) {
-        store.dispatch(updateAuthStatus(true));
+        store.dispatch(fetchToken(query.code));
     }
 
     next();

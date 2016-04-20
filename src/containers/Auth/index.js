@@ -21,9 +21,7 @@ const renderUnauthorized = () => {
 };
 
 @connect(
-    (state) => {
-        return state.auth;
-    },
+    (state) => state.auth,
     dispatch => bindActionCreators(actionCreators, dispatch)
 )
 export class Auth extends Component {
