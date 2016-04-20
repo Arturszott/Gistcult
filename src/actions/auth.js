@@ -1,13 +1,14 @@
 import fetch from 'isomorphic-fetch';
 
-export function updateAuthStatus(isAuthorized) {
+export function updateAuthStatus(token) {
+    console.log(token);
     return {
-        type: 'AUTH_STATUS',
-        isAuthorized
+        type: 'UPDATE_TOKEN',
+        token
     };
 }
 
-export function fetchToken(code) {
+export function fetchToken(code, next) {
     const baseUrl = 'https://github.com/login/oauth/access_token';
 
     return (dispatch, getState) => {
@@ -28,10 +29,11 @@ export function fetchToken(code) {
                     return response.json();
                 })
                 .then((data) => {
-                    if (data.accessToken) {
-                        dispatch(updateAuthStatus(data.accessToken));
+                    if (data.access_token) {
+                        dispatch(updateAuthStatus(data.access_token));
                     }
 
+                    next();
                 })
         });
     };

@@ -4,10 +4,11 @@ import { bindActionCreators } from 'redux';
 
 import * as actionCreators from 'actions/auth';
 
-const renderAuthorized = () => {
+const renderAuthorized = (token) => {
     return (
         <section>
             <h1>Authorized</h1>
+            <p>token: {token}</p>
         </section>
     );
 };
@@ -21,17 +22,18 @@ const renderUnauthorized = () => {
 };
 
 @connect(
-    (state) => state.auth,
+    (state) => {console.log(state); return state.auth},
     dispatch => bindActionCreators(actionCreators, dispatch)
 )
 export class Auth extends Component {
     static propTypes = {
-        isAuthorized: React.PropTypes.bool.isRequired
+        token: React.PropTypes.string
     };
 
     render() {
-        const { isAuthorized } = this.props;
+        const { token } = this.props;
+        const isAuthorized = Boolean(token);
 
-        return isAuthorized ? renderAuthorized() : renderUnauthorized();
+        return isAuthorized ? renderAuthorized(token) : renderUnauthorized();
     }
 }
