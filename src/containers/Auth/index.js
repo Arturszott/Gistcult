@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-const renderAuthorized = (token) => {
+import * as actionCreators from 'actions/auth';
+
+const renderAuthorized = () => {
     return (
         <section>
             <h1>Authorized</h1>
-            <p>token: {token}</p>
         </section>
     );
 };
@@ -17,11 +20,20 @@ const renderUnauthorized = () => {
     );
 };
 
+@connect(
+    (state) => {
+        return state.auth;
+    },
+    dispatch => bindActionCreators(actionCreators, dispatch)
+)
 export class Auth extends Component {
-    render() {
-        const isAuthorized = Boolean(this.props.location.query.code);
-        const welcomeMessage = isAuthorized ? renderAuthorized(this.props.location.query.code) : renderUnauthorized();
+    static propTypes = {
+        isAuthorized: React.PropTypes.bool.isRequired
+    };
 
-        return welcomeMessage
+    render() {
+        const { isAuthorized } = this.props;
+
+        return isAuthorized ? renderAuthorized() : renderUnauthorized();
     }
 }

@@ -28,9 +28,9 @@ export class TopImage extends Component {
                 speed={700}
                 wait={900}
               >
-                <p>
-                  Start your project easy and fast with modern tools
-                </p>
+                <div>
+                  {this.props.children}
+                </div>
               </LoadingOrderAnimation>
             </div>
           </div>
