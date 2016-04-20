@@ -7,7 +7,7 @@ import * as actionCreators from 'actions/auth';
 const renderAuthorized = (token) => {
     return (
         <section>
-            <h1>Authorized</h1>
+            <h1>Authorized!</h1>
             <p>token: {token}</p>
         </section>
     );
@@ -22,7 +22,7 @@ const renderUnauthorized = () => {
 };
 
 @connect(
-    (state) => {console.log(state); return state.auth},
+    (state) => state.auth,
     dispatch => bindActionCreators(actionCreators, dispatch)
 )
 export class Auth extends Component {

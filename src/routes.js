@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import { fetchToken } from './actions/auth';
+import actions from './actions/auth';
 
 /* containers */
 import { App } from 'containers/App';
@@ -11,7 +11,7 @@ const validateCode = (store, nextState, replace, next) => {
     const query = nextState.location.query;
 
     if (query.code) {
-        store.dispatch(fetchToken(query.code, next));
+        store.dispatch(actions.fetchToken(query.code, next));
     }
 };
 
