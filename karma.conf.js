@@ -4,9 +4,19 @@ module.exports = (config) => {
     singleRun: true,
     frameworks: ['mocha'],
     reporters: ['dots'],
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
     files: [
       'test/**/*.spec.js',
+    ],
+    plugins: [
+      'karma-phantomjs-launcher',
+      'karma-chai',
+      'karma-mocha',
+      'karma-sourcemap-loader',
+      'karma-webpack',
+      'karma-mocha-reporter',
+      'karma-sinon',
+      'karma-sinon-chai'
     ],
     preprocessors: {
       'test/**/*.spec.js': ['webpack'],
