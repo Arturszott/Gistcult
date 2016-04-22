@@ -1,4 +1,4 @@
 --reporter min
---recursive
+--recursive ./src/test/
 --compilers js:babel-core/register
 --require ./src/test/extensions.js

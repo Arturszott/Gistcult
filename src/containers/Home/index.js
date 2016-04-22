@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DocumentMeta from 'react-document-meta';
 
-import { TopImage } from 'components/TopImage';
+import TopImage from '../../components/TopImage';
+import LoginButton from '../../components/buttons/LoginButton';
 
 const metaData = {
     title: 'CodeCult Gister',
@@ -25,9 +26,7 @@ export class Home extends Component {
             <section>
                 <DocumentMeta {...metaData} />
                 <TopImage>
-                    <a href={`https://github.com/login/oauth/authorize?client_id=${this.props.config.clientID}&scope=gist`}>
-                        Login via Github
-                    </a>
+                    <LoginButton clientId={this.props.config.clientID} />
                 </TopImage>
             </section>
         );
