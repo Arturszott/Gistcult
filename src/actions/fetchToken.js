@@ -9,25 +9,32 @@ function updateAuthStatus(token) {
     };
 }
 
-export default function fetchToken(code, next) {
+const createGithubLink = ({ clientID, clientSecret }, code) => {
     const baseUrl = 'https://github.com/login/oauth/access_token';
 
+    return `${baseUrl}?client_id=${clientID}&client_secret=${clientSecret}&scope=gist&code=${code}`;
+};
+
+export default function fetchToken(code, next) {
     return (dispatch, getState) => {
         const state = getState();
-        const { clientID, clientSecret } = state.auth.config;
-        const url = `${baseUrl}?client_id=${clientID}&client_secret=${clientSecret}&scope=gist&code=${code}`;
+        const url = createGithubLink(state.auth.config, code);
 
         const options = {
             method: 'POST',
+            body: {},
             headers: {
                 'Accept': 'application/json'
             }
         };
 
         return dispatch(()=> {
-            fetch(url, options)
+            return fetch(url, options)
                 .then((response) => {
                     return response.json();
+                })
+                .catch((err)=> {
+                    console.log(err)
                 })
                 .then((data) => {
                     const token = data.access_token;

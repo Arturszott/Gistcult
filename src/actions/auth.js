@@ -1,4 +1,4 @@
-import fetchToken from './auth/fetchToken';
+import fetchToken from './fetchToken';
 
 export default {
     fetchToken

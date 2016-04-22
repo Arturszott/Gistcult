@@ -6,11 +6,13 @@ function updateGists(list) {
         list
     };
 }
-export default function fetchGists(token) {
-    return (dispatch, getState) => {
-        const state = getState();
-        const baseUrl = 'https://api.github.com/gists';
-        const url = `${baseUrl}?access_token=${state.auth.token}`;
+
+const createGithubUrl = (token) => {
+    return `https://api.github.com/gists?access_token=${token}`;
+};
+export default function fetchGists(token, next) {
+    return (dispatch) => {
+        const url = createGithubUrl(token);
 
         const options = {
             headers: {
@@ -19,12 +21,13 @@ export default function fetchGists(token) {
         };
 
         return dispatch(()=> {
-            fetch(url, options)
+            return fetch(url, options)
                 .then((response) => {
                     return response.json();
                 })
                 .then((data) => {
                     dispatch(updateGists(data));
+                    next();
                 });
         });
     };

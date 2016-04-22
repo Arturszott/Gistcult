@@ -18,4 +18,5 @@ Dear diary, I've got it finally right. I have a feeling that I don't follow redu
 
 
 ## Day 3
-Dear diary, I've been very disappointed about karma behaviour, so I had to get rid of it. Mocha does the job. I've finally have the setup that works.
+Dear diary, I've been very disappointed about karma behaviour, so I had to get rid of it. Mocha does the job. I've finally have the setup that works. Today I've learned that there is a big difference between client_Id and clientId. I was knocking to nock but I've missed the right door. It seems that `nock.recorder.rec` is useful. I must be doing something wrong with redux actions, because it returns function that returns function that returns function that returns promise. It must be simpler. I feel sorry for all the people who are starting Redux withoit proper guidance.
+ 

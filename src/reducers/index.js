@@ -1,11 +1,10 @@
 import { combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form';
 import { auth } from './auth';
+import { gists } from './gists';
 
 const rootReducer = combineReducers({
-  form: formReducer,
-  /* your reducers */
   auth,
+  gists,
 });
 
 export default rootReducer;
