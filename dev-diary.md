@@ -16,3 +16,6 @@ Dear diary, I've managed to create a new site that is available for the github a
 ## Day 2
 Dear diary, I've got it finally right. I have a feeling that I don't follow redux principles like it should be done. I've succeeded with forcing react-router to do some actions and save the results in the store. Finally having the setup right I can focus more on it's stability. Had some problems with CORS but chrome [plugin](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi) saved the day. This saved me some time from moving all the calls to the node layer. I still have no idea where to import the app config, but there are more important things to do.
 
+
+## Day 3
+Dear diary, I've been very disappointed about karma behaviour, so I had to get rid of it. Mocha does the job. I've finally have the setup that works.
