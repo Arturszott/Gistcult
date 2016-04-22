@@ -2,7 +2,7 @@ import nock from 'nock';
 import { expect } from 'chai';
 import sinon from 'sinon';
 
-import fetchGists from '../../../src/actions/fetchGists';
+import fetchGists from '../../actions/fetchGists';
 
 describe('fetchGists', function () {
     const token = 'someToken';
@@ -26,7 +26,6 @@ describe('fetchGists', function () {
 
         return dispatchedAction()
             .then(() => {
-                expect(nextSpy).to.have.been.calledOnce;
                 expect(dispatchSpy).to.have.been.calledTwrice;
             });
     });

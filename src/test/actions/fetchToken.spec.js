@@ -2,7 +2,7 @@ import nock from 'nock';
 import { expect } from 'chai';
 import sinon from 'sinon';
 
-import fetchToken from '../../../src/actions/fetchToken';
+import fetchToken from '../../actions/fetchToken';
 
 describe('fetchToken', function () {
     const code = 'someCode';

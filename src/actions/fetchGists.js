@@ -1,16 +1,16 @@
 import fetch from 'isomorphic-fetch';
 
-function updateGists(list) {
+function updateGists(items) {
     return {
         type: 'UPDATE_GISTS',
-        list
+        items
     };
 }
 
 const createGithubUrl = (token) => {
     return `https://api.github.com/gists?access_token=${token}`;
 };
-export default function fetchGists(token, next) {
+export default function fetchGists(token) {
     return (dispatch) => {
         const url = createGithubUrl(token);
 
@@ -27,7 +27,6 @@ export default function fetchGists(token, next) {
                 })
                 .then((data) => {
                     dispatch(updateGists(data));
-                    next();
                 });
         });
     };
