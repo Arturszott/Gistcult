@@ -19,4 +19,6 @@ Dear diary, I've got it finally right. I have a feeling that I don't follow redu
 
 ## Day 3
 Dear diary, I've been very disappointed about karma behaviour, so I had to get rid of it. Mocha does the job. I've finally have the setup that works. Today I've learned that there is a big difference between client_Id and clientId. I was knocking to nock but I've missed the right door. It seems that `nock.recorder.rec` is useful. I must be doing something wrong with redux actions, because it returns function that returns function that returns function that returns promise. It must be simpler. I feel sorry for all the people who are starting Redux withoit proper guidance.
+
+By finally integrating react-bootstrap I proceed to visualize some received data from github. It would be probably a good idea to split connecting the container from the page component afterwards to facilitate page component testing. I totally want to move authentication verification to some pre-route loading moment, but due to time capacity, rendering different components in one page must be enough. I should also definitely save the current access token. This page reloading is annoying.
  
