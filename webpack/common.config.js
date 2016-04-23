@@ -28,7 +28,7 @@ const common = {
   },
 
   resolve: {
-    extensions: ['', '.jsx', '.js', '.json', '.scss'],
+    extensions: ['', '.jsx', '.js', '.json', '.scss', '.css'],
     modulesDirectories: ['node_modules', PATHS.app],
   },
 
@@ -59,6 +59,9 @@ const common = {
       loaders: ['babel-loader'],
       exclude: /node_modules/,
     }, {
+      test: /\.css$/,
+      loader: "style-loader!css-loader"
+    },{
       test: /\.png$/,
       loader: 'file?name=[name].[ext]',
     }, {
