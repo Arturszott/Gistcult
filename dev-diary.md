@@ -22,3 +22,6 @@ Dear diary, I've been very disappointed about karma behaviour, so I had to get r
 
 By finally integrating react-bootstrap I proceed to visualize some received data from github. It would be probably a good idea to split connecting the container from the page component afterwards to facilitate page component testing. I totally want to move authentication verification to some pre-route loading moment, but due to time capacity, rendering different components in one page must be enough. I should also definitely save the current access token. This page reloading is annoying.
  
+ 
+ ## Day 4
+ Dear diary, finally access token is saved in localstorage. I had to extract some actions and provide them to the fetching one via dependency injections. Now it's all nice and testable.

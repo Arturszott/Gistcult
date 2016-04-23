@@ -1,11 +1,6 @@
 import fetch from 'isomorphic-fetch';
 
-function updateGists(items) {
-    return {
-        type: 'UPDATE_GISTS',
-        items
-    };
-}
+import updateGists from './updateGists';
 
 const createGithubUrl = (token) => {
     return `https://api.github.com/gists?access_token=${token}`;

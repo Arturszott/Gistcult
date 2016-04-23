@@ -7,11 +7,17 @@ import { App } from 'containers/App';
 import { Home } from 'containers/Home';
 import { Auth } from 'containers/Auth';
 
-const validateCode = (store, nextState, replace, next) => {
-    const query = nextState.location.query;
+const storage = window.localStorage;
+const callbacks = [
+    actions.updateToken,
+    actions.fetchGists
+];
 
-    if (query.code) {
-        store.dispatch(actions.fetchToken(query.code, next));
+const retrieveToken = (store, nextState, replace, next) => {
+    const { code } = nextState.location.query;
+
+    if (code) {
+        store.dispatch(actions.fetchToken(code, storage, callbacks, next));
     }
 };
 
@@ -19,7 +25,7 @@ export default (store) => {
     return (
         <Route path="/" component={App}>
             <IndexRoute component={Home} />
-            <Route path="auth" component={Auth} onEnter={validateCode.bind(null, store)}/>
+            <Route path="auth" component={Auth} onEnter={retrieveToken.bind(null, store)}/>
         </Route>
     );
 }

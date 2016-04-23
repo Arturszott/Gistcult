@@ -7,6 +7,13 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import * as actionCreators from '../../actions/auth';
 import Gists from '../../components/gists/Items';
 
+const renderGist = (gist) => {
+    if (!gist) return null;
+
+    const content = gist.files[Object.keys(gist.files)[0]];
+
+    return JSON.stringify(content, null, 4);
+};
 
 const renderAuthorized = (gists) => {
     return (
@@ -15,7 +22,12 @@ const renderAuthorized = (gists) => {
             <Col xs={12} md={4}>
                 <Gists items={gists} />
             </Col>
-            <Col xs={12} md={6}>Files</Col>
+            <Col xs={12} md={6}>
+
+                    <p>
+                        {renderGist(gists[0])}
+                    </p>
+            </Col>
         </Row>
     );
 };
