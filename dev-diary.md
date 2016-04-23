@@ -26,3 +26,5 @@ By finally integrating react-bootstrap I proceed to visualize some received data
  Dear diary, finally access token is saved in localstorage. I had to extract some actions and provide them to the fetching one via dependency injections. Now it's all nice and testable. Testing connected component wasn't hard so far.
  
  Imagine how surprised I were when I realized that there is no error in react-router if you provide `undefined` component.
+ 
+ After a few hours I'm now sure that I made a huge mistake by not designing redux state. Probably watching the rest 20 lessons of Redux on egghead would be a better idea. Cutting the corners was the result of the though that I won't be able to ship as much of the app as I wanted to. Untested parts of the app are slapping me in the face hard. I have couple ideas for refactorings though, so it's not that bad.
