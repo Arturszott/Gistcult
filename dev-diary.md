@@ -21,7 +21,8 @@ Dear diary, I've got it finally right. I have a feeling that I don't follow redu
 Dear diary, I've been very disappointed about karma behaviour, so I had to get rid of it. Mocha does the job. I've finally have the setup that works. Today I've learned that there is a big difference between client_Id and clientId. I was knocking to nock but I've missed the right door. It seems that `nock.recorder.rec` is useful. I must be doing something wrong with redux actions, because it returns function that returns function that returns function that returns promise. It must be simpler. I feel sorry for all the people who are starting Redux withoit proper guidance.
 
 By finally integrating react-bootstrap I proceed to visualize some received data from github. It would be probably a good idea to split connecting the container from the page component afterwards to facilitate page component testing. I totally want to move authentication verification to some pre-route loading moment, but due to time capacity, rendering different components in one page must be enough. I should also definitely save the current access token. This page reloading is annoying.
- 
- 
- ## Day 4
+
+## Day 4
  Dear diary, finally access token is saved in localstorage. I had to extract some actions and provide them to the fetching one via dependency injections. Now it's all nice and testable. Testing connected component wasn't hard so far.
+ 
+ Imagine how surprised I were when I realized that there is no error in react-router if you provide `undefined` component.

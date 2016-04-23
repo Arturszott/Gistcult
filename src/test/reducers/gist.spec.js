@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { gists } from '../../reducers/gists';
 
-describe('Auth reducer:', () => {
+describe('Gist reducer:', () => {
     const updateAction = {
         type: 'UPDATE_GISTS',
         items: [ 'gist1', 'gist2' ]
@@ -17,6 +17,6 @@ describe('Auth reducer:', () => {
     });
 
     it('should provide initialState with config', () => {
-        expect(gists(undefined, initAction)).to.be.deep.equal({ items: [] })
+        expect(gists(undefined, initAction)).to.be.deep.equal({ items: [], gistData: {}, selectedId: null })
     });
 });

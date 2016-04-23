@@ -17,7 +17,9 @@ describe('Auth container', function () {
                 token: '123'
             },
             gists: {
-                items: []
+                items: [],
+                gistData: {},
+                selectedId: null
             }
         };
         const mockedStore = createMockedStore(state);

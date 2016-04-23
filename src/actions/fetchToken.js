@@ -18,8 +18,9 @@ export default function fetchToken(code, storage, callbacks, next) {
 
         if (storedToken) {
             dispatchToken(dispatch, callbacks, storedToken);
+            next();
 
-            return next();
+            return
         }
 
         const state = getState();

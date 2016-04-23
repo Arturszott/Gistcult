@@ -1,21 +1,32 @@
-import React, { Component } from 'react';
+import React from 'react';
+import R from 'ramda';
 
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
-const renderItem = (item, i) => {
+const renderItem = ({ onItemClick }, isSelected, item, i) => {
     const fileNames = Object.keys(item.files);
+    const onItemClickBound = onItemClick.bind(null, item.url, item.id);
 
-    console.log(item);
-
-    return <ListGroupItem key={i}>{fileNames[0]}</ListGroupItem>
+    return (
+        <ListGroupItem key={i} onClick={onItemClickBound} active={isSelected(item.id)}>
+            {fileNames[0]}
+        </ListGroupItem>
+    );
 };
 
-const Items = ({ items }) => {
+const Items = (props) => {
+    const isSelected = R.equals(props.selectedId);
+
     return (
         <ListGroup>
-            {items.map(renderItem)}
+            {props.items.map(renderItem.bind(null, props, isSelected))}
         </ListGroup>
     )
 };
 
 export default Items;
+
+Items.propTypes = {
+    items: React.PropTypes.array,
+    isSelected: React.PropTypes.string
+};

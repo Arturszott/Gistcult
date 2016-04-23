@@ -5,7 +5,7 @@ import actions from './actions/auth';
 /* containers */
 import { App } from 'containers/App';
 import { Home } from 'containers/Home';
-import { Auth } from 'containers/Auth';
+import Auth from 'containers/Auth/index';
 
 const storage = window.localStorage;
 const callbacks = [

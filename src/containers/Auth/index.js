@@ -4,8 +4,9 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import { Grid, Row, Col } from 'react-bootstrap';
 
-import * as actionCreators from '../../actions/auth';
+import actions from '../../actions/auth';
 import Gists from '../../components/gists/Items';
+import Files from '../../components/gists/Files';
 
 const renderGist = (gist) => {
     if (!gist) return null;
@@ -15,14 +16,25 @@ const renderGist = (gist) => {
     return JSON.stringify(content, null, 4);
 };
 
-const renderAuthorized = (gists) => {
+const renderAuthorized = (props) => {
+    const { gists, gistData, selectedId, fetchGistContent } = props;
+    const selectedGistData = gistData[selectedId];
+    const loadGistContent = (url, id) => {
+        fetchGistContent(url, id);
+    };
+
     return (
         <Row>
             <Col xs={12} md={2}>Menu</Col>
             <Col xs={12} md={4}>
-                <Gists items={gists} />
+                <Gists
+                    items={gists}
+                    selectedId={selectedId}
+                    onItemClick={loadGistContent}
+                />
             </Col>
             <Col xs={12} md={6}>
+                <Files data={selectedGistData}/>
             </Col>
         </Row>
     );
@@ -41,20 +53,22 @@ const renderUnauthorized = () => {
     (state) => {
         return {
             token: state.auth.token,
-            gists: state.gists.items
+            gists: state.gists.items,
+            gistData: state.gists.gistData,
+            selectedId: state.gists.selectedId
         }
     },
-    dispatch => bindActionCreators(actionCreators, dispatch)
+    (dispatch) => bindActionCreators(actions, dispatch)
 )
 export default class Auth extends Component {
     static propTypes = {
-        token: React.PropTypes.string
+        token: React.PropTypes.string,
+        gists: React.PropTypes.array
     };
 
     render() {
-        const { token, gists } = this.props;
-        const isAuthorized = Boolean(token);
+        const isAuthorized = Boolean(this.props.token);
 
-        return isAuthorized ? renderAuthorized(gists) : renderUnauthorized();
+        return isAuthorized ? renderAuthorized(this.props) : renderUnauthorized();
     }
 }
