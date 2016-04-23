@@ -23,10 +23,6 @@ const renderAuthorized = (gists) => {
                 <Gists items={gists} />
             </Col>
             <Col xs={12} md={6}>
-
-                    <p>
-                        {renderGist(gists[0])}
-                    </p>
             </Col>
         </Row>
     );
@@ -50,7 +46,7 @@ const renderUnauthorized = () => {
     },
     dispatch => bindActionCreators(actionCreators, dispatch)
 )
-export class Auth extends Component {
+export default class Auth extends Component {
     static propTypes = {
         token: React.PropTypes.string
     };

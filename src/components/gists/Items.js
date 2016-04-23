@@ -5,6 +5,8 @@ import { ListGroup, ListGroupItem } from 'react-bootstrap';
 const renderItem = (item, i) => {
     const fileNames = Object.keys(item.files);
 
+    console.log(item);
+
     return <ListGroupItem key={i}>{fileNames[0]}</ListGroupItem>
 };
 

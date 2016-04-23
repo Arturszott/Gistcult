@@ -1,5 +1,3 @@
-// hardcoded client ID, should be passed from external config, process.env
-
 const initialState = {
     items: []
 };

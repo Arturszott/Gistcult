@@ -24,4 +24,4 @@ By finally integrating react-bootstrap I proceed to visualize some received data
  
  
  ## Day 4
- Dear diary, finally access token is saved in localstorage. I had to extract some actions and provide them to the fetching one via dependency injections. Now it's all nice and testable.
+ Dear diary, finally access token is saved in localstorage. I had to extract some actions and provide them to the fetching one via dependency injections. Now it's all nice and testable. Testing connected component wasn't hard so far.
