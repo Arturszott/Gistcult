@@ -6,6 +6,11 @@ import chaiAsPromised from 'chai-as-promised';
 
 import './prepareWindow';
 
+
+require.extensions['.css'] = () => {
+    return null;
+};
+
 chai.use(sinonChai);
 chai.use(chaiEnzyme());
 chai.use(chaiAsPromised);
