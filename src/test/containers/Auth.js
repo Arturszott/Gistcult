@@ -5,10 +5,10 @@ import { mount } from 'enzyme';
 import sinon from 'sinon';
 import { Col } from 'react-bootstrap'
 
-import Gists from '../../../components/Gists/Items';
-import Auth from '../../../containers/Auth';
+import Gists from '../../components/Gists/Items';
+import Auth from '../../containers/Auth/index';
 
-import createMockedStore from '../../createMockedStore';
+import createMockedStore from '../createMockedStore';
 
 describe('Auth container', function () {
     it('should should have correct github href', function () {
