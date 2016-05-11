@@ -1,5 +1,3 @@
-import R from 'ramda';
-
 const initialState = {
     items: [],
     gistData: {},
@@ -22,8 +20,7 @@ export function gists(state = initialState, action) {
                     ...state.gistData,
                     [action.id]: action.data
                 }
-
-            }
+            };
         default:
             return state;
     }

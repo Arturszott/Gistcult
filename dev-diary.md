@@ -28,3 +28,6 @@ By finally integrating react-bootstrap I proceed to visualize some received data
  Imagine how surprised I were when I realized that there is no error in react-router if you provide `undefined` component.
  
  After a few hours I'm now sure that I made a huge mistake by not designing redux state. Probably watching the rest 20 lessons of Redux on egghead would be a better idea. Cutting the corners was the result of the though that I won't be able to ship as much of the app as I wanted to. Untested parts of the app are slapping me in the face hard. I have couple ideas for refactorings though, so it's not that bad.
+
+#Day 5
+Dear diary trying out the multimethod library has not simplified reducers, only added another layer of complexity.
