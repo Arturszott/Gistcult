@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import { Grid, Row, Col } from 'react-bootstrap';
 
 import actions from '../../actions/auth';
-import Gists from '../../components/gists/Items';
+import Gists from '../../components/gists/Gists';
 import Files from '../../components/gists/Files';
 
 const renderGist = (gist) => {
@@ -19,9 +19,6 @@ const renderGist = (gist) => {
 const renderAuthorized = (props) => {
     const { gists, gistData, selectedId, fetchGistContent } = props;
     const selectedGistData = gistData[selectedId];
-    const loadGistContent = (url, id) => {
-        fetchGistContent(url, id);
-    };
 
     return (
         <Row>
@@ -30,7 +27,7 @@ const renderAuthorized = (props) => {
                 <Gists
                     items={gists}
                     selectedId={selectedId}
-                    onItemClick={loadGistContent}
+                    onItemClick={fetchGistContent}
                 />
             </Col>
             <Col xs={12} md={6}>
