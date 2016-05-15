@@ -2,12 +2,9 @@ import fetch from 'isomorphic-fetch';
 
 import updateGists from './updateGists';
 
-const createGithubUrl = (token) => {
-    return `https://api.github.com/gists?access_token=${token}`;
-};
-export default function fetchGists(token, next) {
+export default function fetchGists(token, done) {
     return (dispatch) => {
-        const url = createGithubUrl(token);
+        const url = `https://api.github.com/gists?access_token=${token}`;
 
         const options = {
             headers: {
@@ -22,7 +19,7 @@ export default function fetchGists(token, next) {
                 })
                 .then((data) => {
                     dispatch(updateGists(data));
-                    next()
+                    done()
                 });
         });
     };

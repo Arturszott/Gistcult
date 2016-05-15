@@ -17,7 +17,7 @@ const renderGist = (gist) => {
 };
 
 const renderAuthorized = (props) => {
-    const { gists, gistData, selectedId, fetchGistContent } = props;
+    const { gists, gistData, selectedId, fetchGistContent, token } = props;
     const selectedGistData = gistData[selectedId];
 
     return (
@@ -26,6 +26,7 @@ const renderAuthorized = (props) => {
             <Col xs={12} md={4}>
                 <Gists
                     items={gists}
+                    token={token}
                     selectedId={selectedId}
                     onItemClick={fetchGistContent}
                 />
@@ -46,15 +47,17 @@ const renderUnauthorized = () => {
     );
 };
 
+const mapStateToProps = (state) => {
+    return {
+        token: state.auth.token,
+        gists: state.gists.items,
+        gistData: state.gists.gistData,
+        selectedId: state.gists.selectedId
+    }
+};
+
 @connect(
-    (state) => {
-        return {
-            token: state.auth.token,
-            gists: state.gists.items,
-            gistData: state.gists.gistData,
-            selectedId: state.gists.selectedId
-        }
-    },
+    mapStateToProps,
     (dispatch) => bindActionCreators(actions, dispatch)
 )
 export default class Auth extends Component {

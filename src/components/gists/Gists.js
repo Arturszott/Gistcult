@@ -4,19 +4,24 @@ import { ListGroup } from 'react-bootstrap';
 
 import Gist from './Gist';
 
-const Gists = ({ onItemClick, items, selectedId}) => {
+const authenticateUrl = (url) => {
+    return $
+}
+
+const Gists = ({ onItemClick, items, selectedId, token}) => {
     const isSelected = R.equals(selectedId);
 
     return (
         <ListGroup>
             {items.map(({files, url, id}) => {
                 const fileNames = Object.keys(files);
+                const authenticatedUrl = `${url}?access_token=${token}`;
 
                 return (
                     <Gist
                         key={id}
                         title={fileNames[0]}
-                        onClick={() => { onItemClick(url, id)}}
+                        onClick={() => { onItemClick(authenticatedUrl, id)}}
                         active={isSelected(id)}
                     >
                     </Gist>
