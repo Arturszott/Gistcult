@@ -5,7 +5,6 @@ const initialState = {
 };
 
 export function gists(state = initialState, action) {
-
     switch (action.type) {
         case 'UPDATE_GISTS':
             return {

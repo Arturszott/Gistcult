@@ -26,7 +26,7 @@ export class Home extends Component {
             <section>
                 <DocumentMeta {...metaData} />
                 <TopImage>
-                    <LoginButton clientID={this.props.config.clientID} />
+                    <LoginButton/>
                 </TopImage>
             </section>
         );

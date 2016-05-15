@@ -5,7 +5,7 @@ import updateGists from './updateGists';
 const createGithubUrl = (token) => {
     return `https://api.github.com/gists?access_token=${token}`;
 };
-export default function fetchGists(token) {
+export default function fetchGists(token, next) {
     return (dispatch) => {
         const url = createGithubUrl(token);
 
@@ -22,8 +22,8 @@ export default function fetchGists(token) {
                 })
                 .then((data) => {
                     dispatch(updateGists(data));
+                    next()
                 });
         });
     };
-
 }

@@ -11,7 +11,7 @@ import Auth from '../../containers/Auth/index';
 import createMockedStore from '../createMockedStore';
 
 describe('Auth container', function () {
-    it('should should have correct github href', function () {
+    it('should render gists items', function () {
         const state = {
             auth: {
                 token: '123'
@@ -26,8 +26,8 @@ describe('Auth container', function () {
 
         const container = mount(<Auth store={mockedStore} />);
 
-        expect(container.find('Items')).to.have.length(1);
-        expect(container.find('Items')).to.have.prop('items', state.gists.items);
+        expect(container.find('Gists')).to.be.present();
+        expect(container.find('Gists')).to.have.prop('items', state.gists.items);
         expect(container.find(Col)).to.have.length(3);
     });
 });
