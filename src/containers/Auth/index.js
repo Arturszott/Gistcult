@@ -1,74 +1,76 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Link } from 'react-router';
-import { Grid, Row, Col } from 'react-bootstrap';
+  import React, { Component } from 'react';
+  import R from 'ramda';
+  import { connect } from 'react-redux';
+  import { bindActionCreators } from 'redux';
+  import { Link } from 'react-router';
+  import { Grid, Row, Col } from 'react-bootstrap';
 
-import actions from '../../actions/auth';
-import Gists from '../../components/gists/Gists';
-import Files from '../../components/gists/Files';
+  import fetchGistContent from '../../actions/fetchGistContent';
+  import Gists from '../../components/gists/Gists';
+  import Files from '../../components/gists/Files';
 
-const renderGist = (gist) => {
-    if (!gist) return null;
+  const findSelectedGist = (gists, id) => {
+    return R.find(R.propEq('id', id))(gists);
+  };
 
-    const content = gist.files[Object.keys(gist.files)[0]];
+  const renderAuthorized = (props) => {
+    const { gists, selectedId, fetchGistContent, token } = props;
 
-    return JSON.stringify(content, null, 4);
-};
+    const onGistClick = (url, id) => {
+      if (id === selectedId) {
+        return false;
+      }
 
-const renderAuthorized = (props) => {
-    const { gists, gistData, selectedId, fetchGistContent, token } = props;
-    const selectedGistData = gistData[selectedId];
+      const authenticatedUrl = `${url}?access_token=${token}`;
 
-    return (
-        <Row>
-            <Col xs={12} md={2}>Menu</Col>
-            <Col xs={12} md={4}>
-                <Gists
-                    items={gists}
-                    token={token}
-                    selectedId={selectedId}
-                    onItemClick={fetchGistContent}
-                />
-            </Col>
-            <Col xs={12} md={6}>
-                <Files data={selectedGistData}/>
-            </Col>
-        </Row>
-    );
-};
-
-const renderUnauthorized = () => {
-    return (
-        <Grid>
-            <h1>Unauthorized</h1>
-            <Link to='/'>Try to login again</Link>
-        </Grid>
-    );
-};
-
-const mapStateToProps = (state) => {
-    return {
-        token: state.auth.token,
-        gists: state.gists.items,
-        gistData: state.gists.gistData,
-        selectedId: state.gists.selectedId
-    }
-};
-
-@connect(
-    mapStateToProps,
-    (dispatch) => bindActionCreators(actions, dispatch)
-)
-export default class Auth extends Component {
-    static propTypes = {
-        token: React.PropTypes.string,
-        gists: React.PropTypes.array
+      fetchGistContent(authenticatedUrl, id);
     };
 
-    render() {
+    const selectedGist = findSelectedGist(gists, selectedId);
+
+    return (
+      <Row>
+        <Col xs={12} md={4}>
+          <Gists
+            items={gists}
+            token={token}
+            selectedId={selectedId}
+            onItemClick={onGistClick}
+          />
+        </Col>
+        <Col xs={12} md={6}>
+          <Files data={selectedGist}/>
+        </Col>
+      </Row>
+    );
+  };
+
+  const renderUnauthorized = () => {
+    return (
+      <Grid>
+        <h1>Unauthorized</h1>
+        <Link to="/">Try to login again</Link>
+      </Grid>
+    );
+  };
+
+  @connect(
+    (state) => ({
+      token: state.auth.token,
+      gists: state.gists.items,
+      selectedId: state.gists.selectedId,
+    }),
+    (dispatch) => bindActionCreators({ fetchGistContent }, dispatch)
+  )
+  export default class Auth extends Component {
+      static propTypes = {
+        token: React.PropTypes.string,
+        gists: React.PropTypes.array,
+      };
+
+      render() {
         const isAuthorized = Boolean(this.props.token);
 
         return isAuthorized ? renderAuthorized(this.props) : renderUnauthorized();
-    }
-}
+      }
+  }

@@ -8,7 +8,11 @@ import configureStore from './store/configureStore';
 import routes from './routes';
 
 const history = useRouterHistory(createHistory)({ queryKey: false });
-const store = configureStore();
+const store = configureStore({
+  auth: {
+    token: localStorage.getItem('access_token')
+  }
+});
 
 ReactDOM.render(
   <Provider store={store}>

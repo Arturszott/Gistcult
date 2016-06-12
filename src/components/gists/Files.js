@@ -13,6 +13,8 @@ const renderItem = ( item, i) => {
 const Files = ({ data = {} }) => {
     let files = [];
 
+    console.log(data);
+
     if (data.files) {
         files =  Object.keys(data.files).map((fileName) => {
             return data.files[fileName]
