@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { auth, config } from '../../reducers/auth';
+import { auth } from '../../reducers/auth';
 
 describe('Auth reducer:', () => {
   const updateAction = {
@@ -17,8 +17,8 @@ describe('Auth reducer:', () => {
       .to.be.deep.equal({ token: updateAction.token });
   });
 
-  it('should provide initialState with config', () => {
+  it('should provide initialState with empty token', () => {
     expect(auth(undefined, initAction))
-      .to.be.deep.equal({ token: null, config });
+      .to.be.deep.equal({ token: null });
   });
 });
