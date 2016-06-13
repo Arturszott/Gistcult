@@ -1,10 +1,9 @@
 import React from 'react';
-
-import {  ListGroupItem } from 'react-bootstrap';
 import CodeMirror from 'react-codemirror';
-import './codemirrorModes';
+import {  ListGroupItem } from 'react-bootstrap';
 import 'codemirror/lib/codemirror.css';
 
+import './codemirrorModes';
 
 const File = ({ filename, content }) => {
     return (
@@ -16,9 +15,9 @@ const File = ({ filename, content }) => {
     );
 };
 
-export default File;
-
 File.propTypes = {
     filename: React.PropTypes.string,
     content: React.PropTypes.string,
 };
+
+export default File;
