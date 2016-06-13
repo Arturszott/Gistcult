@@ -1,7 +1,7 @@
 {
-  "name": "redux-easy-boilerplate",
+  "name": "learning-redux-gist-viewer",
   "version": "2.1.0",
-  "description": "Start your project easy and fast with modern tools",
+  "description": "GIst viewer learning project",
   "scripts": {
     "clean": "rimraf dist",
     "build": "webpack --progress --verbose --colors --display-error-details --config webpack/common.config.js",
@@ -10,33 +10,7 @@
     "start": "node bin/server.js",
     "test": "mocha src/test/**/*.spec.js --opts src/test/mocha.opts"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/anorudes/redux-easy-boilerplate.git"
-  },
-  "homepage": "http://anorudes.github.io/redux-easy-boilerplate/",
-  "bugs": "https://github.com/anorudes/redux-easy-boilerplate/issues",
-  "keywords": [
-    "react",
-    "reactjs",
-    "babel6",
-    "boilerplate",
-    "redux",
-    "hot",
-    "reload",
-    "hmr",
-    "live",
-    "edit",
-    "webpack"
-  ],
   "license": "MIT",
-  "authors": [
-    "Max Anoru (https://github.com/anorudes)",
-    "Andrey Keske (https://github.com/keske)"
-  ],
-  "contributors": [
-    "Ollipekka Jalonen (https://github.com/inertum)"
-  ],
   "devDependencies": {
     "autoprefixer": "6.3.1",
     "babel-core": "^6.4.5",

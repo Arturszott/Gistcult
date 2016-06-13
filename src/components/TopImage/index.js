@@ -19,7 +19,7 @@ export default class TopImage extends Component {
                 wait={700}
               >
                 <h1 className="title">
-                  CodeCult Gist editor
+                  Gist editor
                 </h1>
               </LoadingOrderAnimation>
               <LoadingOrderAnimation animation="fade-in"
